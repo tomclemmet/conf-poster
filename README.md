@@ -36,4 +36,6 @@ In Chrome's print dialog (Ctrl+P):
 3. **Scale** → 100% (not "Fit to page")
 4. **Background graphics** → on
 
+## License
 
+[MIT](LICENSE) — do whatever you like with it.
