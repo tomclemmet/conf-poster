@@ -1,0 +1,429 @@
+/* ==========================================================================
+   A0 Portrait Academic Poster
+   Page: 841mm x 1189mm
+   ========================================================================== */
+
+:root {
+  --page-w: 841mm;
+  --page-h: 1189mm;
+
+  --margin: 15mm;
+  --gap: 10mm;
+
+  --color-primary: #660099;   /* banner / heading accent */
+  --color-primary-light: #f3e9f9;
+  --color-text: #1a1a1a;
+  --color-muted: #555;
+  --color-border: #ddd2e6;
+  --color-box-bg: #ffffff;
+
+  --color-teal: #0e6e6e;
+  --color-teal-tint: #e3f1f0;
+  --color-teal-ink: #0a4f4f;
+
+  --font-body: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-heading: "Segoe UI Semibold", "Helvetica Neue", Arial, sans-serif;
+
+  /* base type scale — tune once real copy is in (pt = physical size, prints true) */
+  --fs-title: 68pt;
+  --fs-authors: 40pt;
+  --fs-affil: 36pt;
+  --fs-h2: 40pt;
+  --fs-h3: 30pt;
+  --fs-body: 24pt;
+  --fs-small: 20pt;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #7d7d7d; /* screen-preview surround, not printed */
+  font-family: var(--font-body);
+  color: var(--color-text);
+}
+
+.poster {
+  width: var(--page-w);
+  height: var(--page-h);
+  margin: 10mm auto;
+  padding: var(--margin);
+  background: #fff;
+  box-shadow: 0 0 20mm rgba(0,0,0,0.3);
+
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-rows: auto auto 1fr 2fr auto;
+  grid-template-areas:
+    "banner   banner"
+    "context  context"
+    "slr      slr"
+    "leftstack cea"
+    "footer   footer";
+  gap: var(--gap);
+}
+
+/* ==========================================================================
+   Shared box styling
+   ========================================================================== */
+
+.box {
+  background: var(--color-box-bg);
+  border: 0.6mm solid var(--color-border);
+  border-radius: 3mm;
+  padding: 8mm;
+  overflow: hidden;
+}
+
+.box h2 {
+  margin: 0 0 5mm 0;
+  font-family: var(--font-heading);
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  color: var(--color-primary);
+  border-bottom: 0.8mm solid var(--color-primary);
+  padding-bottom: 2mm;
+}
+
+.box h3 {
+  font-size: var(--fs-h3);
+  color: var(--color-primary);
+  margin: 4mm 0 2mm 0;
+}
+
+.box p, .box li {
+  font-size: var(--fs-body);
+  line-height: 1.4;
+  color: var(--color-text);
+  margin: 0 0 3mm 0;
+}
+
+.box p:last-child { margin-bottom: 0; }
+
+.box sup {
+  font-size: 0.6em;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.box img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 4mm auto 0;
+}
+
+/* Print-safe image frame: percentage-height flex-item sizing is unreliable
+   in Chrome's print pipeline, so figures use an absolutely-positioned img
+   inside a sized, relatively-positioned wrapper instead. Reused wherever a
+   figure sits in a flex row (.fig-row > .fig-frame). */
+.fig-row {
+  display: flex;
+  gap: 5mm;
+  flex: 1 1 auto;
+  min-height: 0;
+  margin-top: 4mm;
+}
+
+.fig-frame {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+}
+
+.fig-frame img {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ==========================================================================
+   Banner
+   ========================================================================== */
+
+.banner {
+  grid-area: banner;
+  display: grid;
+  grid-template-columns: 0.9fr 3.8fr 0.9fr;
+  align-items: center;
+  gap: 20mm;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: 0;
+  margin: 0 calc(-1 * var(--margin));
+  padding: 10mm var(--margin);
+  overflow: hidden;
+}
+
+.banner-logos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4mm;
+}
+.banner-logos img {
+  max-width: 100%;
+  max-height: 40mm;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Per-logo size overrides — tweak each independently, they vary a lot in shape.
+   Selector needs (.banner-logos img.logo-x) to out-specificity the base
+   ".banner-logos img" rule above, otherwise these are silently ignored. */
+.banner-logos img.logo-dprg   { max-width: 100%; max-height: 60mm; }
+.banner-logos img.logo-mche   { max-width: 100%; max-height: 25mm; }
+.banner-logos img.logo-psouk  { max-width: 100%; max-height: 40mm; }
+.banner-logos img.logo-badbir { max-width: 100%; max-height: 40mm; }
+
+.banner-text { text-align: center; }
+
+.title {
+  margin: 0 0 6mm 0;
+  font-family: var(--font-heading);
+  font-size: var(--fs-title);
+  line-height: 1.15;
+  font-weight: 800;
+}
+
+.authors {
+  margin: 0 0 2mm 0;
+  font-size: var(--fs-authors);
+  font-weight: 600;
+}
+
+.affiliations {
+  margin: 0;
+  font-size: var(--fs-affil);
+  color: #d8e0ee;
+}
+
+/* ==========================================================================
+   Context & Objectives — wide, short
+   ========================================================================== */
+
+.context {
+  grid-area: context;
+  background: var(--color-primary-light);
+}
+
+.context-body p { margin: 0; }
+
+/* ==========================================================================
+   Systematic Literature Review + Key Findings
+   ========================================================================== */
+
+.slr {
+  grid-area: slr;
+  display: flex;
+  flex-direction: column;
+}
+
+.slr-content {
+  display: flex;
+  gap: 7mm;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.slr-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 50%;
+  min-height: 0;
+}
+
+.slr-body img {
+  flex: 1 1 auto;
+  min-height: 0;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.slr-gaps-row {
+  display: flex;
+  flex-direction: column;
+  gap: 5mm;
+  flex: 1 1 50%;
+  min-height: 0;
+}
+
+.finding-card {
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--color-teal-tint);
+  border-left: 5mm solid var(--color-teal);
+  border-radius: 0 2mm 2mm 0;
+  padding: 6mm 7mm;
+}
+
+.finding-card .eyebrow {
+  display: block;
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 32pt;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: black;
+  margin-bottom: 5mm;
+}
+
+.finding-card p {
+  margin: 0;
+  color: var(--color-text);
+  font-size: var(--fs-body);
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+/* ==========================================================================
+   Left stack: Meta-analysis + Real-World Evidence
+   ========================================================================== */
+
+.left-stack {
+  grid-area: leftstack;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.meta-analysis, .rwe {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.meta-analysis {
+  position: relative;
+}
+
+.rwe-side {
+  flex: 0 0 120mm;
+}
+
+.nma-top {
+  display: flex;
+  gap: 5mm;
+  flex: 0 0 auto;
+  margin-top: 4mm;
+}
+
+.nma-text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.nma-text p { margin: 0 0 3mm 0; }
+.nma-text p:last-child { margin-bottom: 0; }
+
+.nma-qr-spacer {
+  flex: 0 0 60mm;
+  width: 60mm;
+}
+
+.nma-qr-block {
+  position: absolute;
+  top: 3mm;
+  right: 3mm;
+  z-index: 1;
+  width: 60mm;
+  background: var(--color-box-bg);
+  border: 0.6mm solid var(--color-border);
+  border-radius: 3mm;
+  padding: 2mm;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nma-qr-figure {
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.nma-qr-label {
+  text-align: center;
+}
+
+.nma-figures {
+  margin-top: 5mm;
+}
+
+/* ==========================================================================
+   Cost-effectiveness analysis — taller box beside the left stack
+   ========================================================================== */
+
+.right-stack {
+  grid-area: cea;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.cea {
+  flex: 3 1 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.cea-side {
+  flex: 0 0 100mm;
+}
+
+.patient-involvement {
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.footer {
+  grid-area: footer;
+  border-top: 0.5mm solid var(--color-border);
+  padding-top: 4mm;
+  display: flex;
+  gap: 10mm;
+  flex-wrap: wrap;
+}
+
+.footer p {
+  margin: 0;
+  font-size: var(--fs-small);
+  color: var(--color-muted);
+}
+
+/* ==========================================================================
+   Print
+   ========================================================================== */
+
+@page {
+  size: 841mm 1189mm;
+  margin: 0;
+}
+
+@media print {
+  html, body {
+    background: none;
+    width: var(--page-w);
+    height: var(--page-h);
+  }
+  .poster {
+    margin: 0;
+    box-shadow: none;
+  }
+}
