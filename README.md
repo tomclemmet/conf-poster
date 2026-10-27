@@ -1,6 +1,6 @@
 # HTML academic poster
 
-A plain HTML/CSS academic poster. No build step — edit the HTML, open it in a browser, print to PDF.
+A plain HTML/CSS academic poster. Edit the HTML/CSS, open it in a browser, and print to PDF.
 
 - [`index.html`](index.html) — a blank template, ready to fill in.
 - [`examples/psoriasis/index.html`](examples/psoriasis/index.html) — a finished poster using the same layout, if you'd rather start from a filled-in example and strip it down. 
@@ -29,7 +29,7 @@ The template and each example are self-contained, so you can copy whichever one 
 
 ## Printing to PDF
 
-In Chrome's print dialog (Ctrl+P):
+In your browser's print dialog (Ctrl+P):
 
 1. **Paper size** → Custom, matching the poster size (A0 default: 841 × 1189 mm)
 2. **Margins** → None
