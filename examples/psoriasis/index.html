@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Academic Poster</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="poster">
+
+  <!-- ============ BANNER ============ -->
+  <header class="banner">
+    <div class="banner-logos banner-logos--left">
+      <img src="images/logos/dprg.png" alt="DPRG logo" class="logo logo-a">
+      <img src="images/logos/mche.png" alt="MCHE logo" class="logo logo-b">
+    </div>
+
+    <div class="banner-text">
+      <h1 class="title">Appraisal of the Cost-Effectiveness of Systemic Therapies for Psoriasis in the Era of Biosimilars</h1>
+      <p class="authors">Thomas Clemmet</p>
+      <p class="affiliations">Supervisors: Zenas Yiu, Duc Binh Phan, Gabriel Rogers, Richard Warren</p>
+    </div>
+
+    <div class="banner-logos banner-logos--right">
+      <img src="images/logos/psoukWhite.svg" alt="Psoriasis UK logo" class="logo logo-c">
+      <img src="images/logos/badbir.png" alt="BADBIR logo" class="logo logo-d">
+    </div>
+
+  </header>
+
+  <!-- ============ INTRODUCTION ============ -->
+  <section class="box intro">
+    <h2>Background &amp; Objectives</h2>
+    <div class="intro-body">
+      <p>Psoriasis is a chronic skin disease caused by systemic, immune-mediated inflammation. There is no cure for psoriasis, but it can be managed with treatment. In recent years, expensive biologics and targeted small-molecule therapies have significantly improved psoriasis care, but this has come with additional costs, though  some low-cost biosimilars are now available. The objective of this PhD is to evaluate different ways of using systemic therapies in psoriasis, taking both costs and patient outcomes into account.</p>
+    </div>
+  </section>
+
+  <!-- ============ MOTIVATION: SYSTEMATIC REVIEW ============ -->
+  <section class="box motivation">
+    <h2>Systematic Literature Review (Published in <i>Pharmacoeconomics</i><sup>1</sup>)</h2>
+    <div class="motivation-content">
+      <div class="motivation-body">
+        <p>We searched MEDLINE, Embase, EconLit, NHS Economic Evaluation Database, and the websites of NICE and SMC for UK cost-utility analyses in psoriasis and psoriatic arthritis. We conducted a narrative synthesis of approaches to modelling, treatment sequences, comorbidities, clinical efficacy, quality of life, and costs. Quality was assessed using the Drummond checklist.</p>
+        <img src="images/prisma.svg" alt="PRISMA diagram">
+      </div>
+      <div class="motivation-cards">
+        <div class="highlight-card">
+          <span class="eyebrow">Evidence gap: Cost-effectiveness of step-through therapy</span>
+          <p>The scope of previous analyses is limited to people who have already received conventional systemic therapies, following standard 'step-through' therapy guidelines, so the cost-effectiveness of using biologics or targeted small-molecule therapies first is unclear.</p>
+        </div>
+        <div class="highlight-card">
+          <span class="eyebrow">Evidence gap: Optimal sequence of targeted therapies</span>
+          <p>Cost-effectiveness models compare only a limited set of sequences, limiting them to three drugs and often fixing second- and third-line treatments while varying the first-line treatment. NICE and BAD guidance doesn't specify which targeted therapies should be given before others.</p>
+        </div>
+        <div class="highlight-card">
+          <span class="eyebrow">Evidence gap: Limitations of previous models</span>
+          <p>Health economic analyses in this area follow established methods, but these methods embed assumptions that may not hold in practice, particularly around long-term outcomes. This limits the meaningfulness of results for the NHS.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LEFT STACK: META-ANALYSIS + RWE ============ -->
+  <div class="left-stack">
+    <section class="box left-top">
+      <div class="qr-block">
+        <div class="qr-figure fig-frame">
+          <img src="images/nma-qr.png" alt="qr code to NMA shiny app">
+        </div>
+        <p class="qr-label">Explore with <br>R Shiny app</p>
+      </div>
+      <h2>Network Meta-Analysis</h2>
+      <div class="left-top-row">
+        <div class="left-top-text">
+          <p>We identified relevant randomised controlled trials (n = 52) from a living Cochrane review<sup>2</sup> and extracted baseline characteristics, PASI, DLQI, and adverse event data. The network for PASI included data from 51,254 individuals across 29 treatments. Preliminary analysis suggested bimekizumab was the most effective option - result to be confirmed by sensitivity analyses.</p>
+        </div>
+        <div class="qr-spacer"></div>
+      </div>
+      <div class="left-top-figures fig-row">
+        <div class="fig-frame">
+          <img src="images/network.png" alt="network diagram">
+        </div>
+        <div class="fig-frame">
+          <img src="images/props.svg" alt="NMA results">
+        </div>
+      </div>
+    </section>
+
+    <section class="box left-bottom">
+      <h2>Real-World Evidence</h2>
+      <p>The British Association of Dermatologists Biologics and Immunomodulators Register (BADBIR) was founded in 2007 and contains data from over 20,000 individuals, including drug start/stop dates, disease severity, and adverse events.</p>
+      <div class="fig-row">
+        <div class="left-bottom-side">
+          <p>Previous health economic analyses rely heavily on short-term trial data and make strong assumptions about long term outcomes, for example:</p>
+          <ul>
+            <li>Long-term discontinuation is the same for every treatment (see right)</li>
+            <li>Long-term discontinuation is the same in each line of treatment</li>
+            <li>Response does not improve or decline between the end of the induction period and treatment discontinuation</li>
+            <li>The impact of comorbidities on quality of life and mortality is negligible</li>
+          </ul>
+        </div>
+        <div class="fig-frame">
+          <img src="images/badbir.svg" alt="BADBIR diagram">
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ COST-EFFECTIVENESS ANALYSIS + PATIENT INVOLVEMENT ============ -->
+  <div class="right-stack">
+    <section class="box right-main">
+      <h2>Cost-Effectiveness Analysis</h2>
+      <p>Cost-effectiveness analyses estimate the costs and benefits of different treatment approaches over a person's lifetime. These estimates are used to make a recommendation, taking into account what the money could have been spent on instead (opportunity cost).</p>
+      <p>The cost-effectiveness model will incorporate results from the network meta-analysis and the BADBIR analysis. The approach described below is for illustrative purposes and has not been finalised.</p>
+      <h3>Potential model structure:</h3>
+      <div class="fig-row">
+        <div class="fig-frame">
+          <img src="images/model.svg" alt="model diagram">
+        </div>
+        <div class="right-main-side">
+          <p><strong>Potential costs:</strong></p>
+          <ul>
+            <li>Drug acquisition</li>
+            <li>Drug administration</li>
+            <li>Concomitant drugs</li>
+            <li>Doctor's appointments</li>
+            <li>Treating adverse events</li>
+            <li>Productivity loss</li>
+          </ul>
+          <p><strong>Potential health effects:</strong></p>
+          <ul>
+            <li>PASI response
+              <ul>
+                <li>Pain and discomfort</li>
+                <li>Functional impairment</li>
+                <li>Psychosocial impact</li>
+              </ul>
+            </li>
+            <li>Comorbidities
+              <ul>
+                <li>Psoriatic arthritis</li>
+                <li>CVD</li>
+                <li>Metabolic syndrome</li>
+                <li>IBD</li>
+              </ul>
+            </li>
+            <li>Adverse events</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="box right-secondary">
+      <h2>Patient Involvement</h2>
+      <p>The perspectives of people with lived experience of psoriasis are vital to conducting and sharing meaningful research in health economics and epidemiology.</p>
+      <p>To help guide this project, I recruited an advisory group of five people with psoriasis through the Psoriasis UK research network.</p>
+      <p>The first advisory group meeting was held in May 2026 and discussed issues including NHS policies around systemic therapy for psoriasis, the value of stable therapy, and what 'successful therapy' looks like.</p>
+      <p>Future meetings could be used to support model design, interpret results, and support research dissemination.</p>
+    </section>
+  </div>
+
+  <!-- ============ FOOTER (optional: references / funding / contact) ============ -->
+  <footer class="footer">
+    <p><strong>References:</strong> 1. Clemmet et al. 2026, Pharmacoeconomics. 2. Sbidian et al. 2025, Cochrane Database Syst Rev.</p>
+    <p><strong>Funding:</strong> Psoriasis UK PhD Studentship</p>
+    <p><strong>Contact:</strong> thomas.clemmet@manchester.ac.uk, Stopford 2.707</p>
+  </footer>
+
+</div>
+
+</body>
+</html>

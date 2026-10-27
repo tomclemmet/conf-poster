@@ -1,0 +1,11 @@
+# Office temp/lock files (source files for figures shouldn't live in images/ anyway)
+~$*.pptx
+~$*.xlsx
+~$*.docx
+*.pptx
+*.xlsx
+*.docx
+
+# OS cruft
+.DS_Store
+Thumbs.db
