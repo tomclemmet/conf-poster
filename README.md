@@ -35,7 +35,3 @@ In your browser's print dialog (Ctrl+P):
 2. **Margins** → None
 3. **Scale** → 100% (not "Fit to page")
 4. **Background graphics** → on
-
-## License
-
-[MIT](LICENSE) — do whatever you like with it.
