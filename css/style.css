@@ -17,9 +17,9 @@
   --color-border: #ddd2e6;
   --color-box-bg: #ffffff;
 
-  --color-teal: #0e6e6e;
-  --color-teal-tint: #e3f1f0;
-  --color-teal-ink: #0a4f4f;
+  --color-accent: #0e6e6e;
+  --color-accent-tint: #e3f1f0;
+  --color-accent-ink: #0a4f4f;
 
   --font-body: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --font-heading: "Segoe UI Semibold", "Helvetica Neue", Arial, sans-serif;
@@ -56,11 +56,11 @@ html, body {
   grid-template-columns: 1.15fr 0.85fr;
   grid-template-rows: auto auto 1fr 2fr auto;
   grid-template-areas:
-    "banner   banner"
-    "context  context"
-    "slr      slr"
-    "leftstack cea"
-    "footer   footer";
+    "banner     banner"
+    "intro      intro"
+    "motivation motivation"
+    "left       right"
+    "footer     footer";
   gap: var(--gap);
 }
 
@@ -178,10 +178,10 @@ html, body {
 /* Per-logo size overrides — tweak each independently, they vary a lot in shape.
    Selector needs (.banner-logos img.logo-x) to out-specificity the base
    ".banner-logos img" rule above, otherwise these are silently ignored. */
-.banner-logos img.logo-dprg   { max-width: 100%; max-height: 60mm; }
-.banner-logos img.logo-mche   { max-width: 100%; max-height: 25mm; }
-.banner-logos img.logo-psouk  { max-width: 100%; max-height: 40mm; }
-.banner-logos img.logo-badbir { max-width: 100%; max-height: 40mm; }
+.banner-logos img.logo-a { max-width: 100%; max-height: 40mm; }
+.banner-logos img.logo-b { max-width: 100%; max-height: 40mm; }
+.banner-logos img.logo-c { max-width: 100%; max-height: 40mm; }
+.banner-logos img.logo-d { max-width: 100%; max-height: 40mm; }
 
 .banner-text { text-align: center; }
 
@@ -206,48 +206,48 @@ html, body {
 }
 
 /* ==========================================================================
-   Context & Objectives — wide, short
+   Introduction — wide, short
    ========================================================================== */
 
-.context {
-  grid-area: context;
+.intro {
+  grid-area: intro;
   background: var(--color-primary-light);
 }
 
-.context-body p { margin: 0; }
+.intro-body p { margin: 0; }
 
 /* ==========================================================================
-   Systematic Literature Review + Key Findings
+   Motivation — wide feature section, figure + highlight cards
    ========================================================================== */
 
-.slr {
-  grid-area: slr;
+.motivation {
+  grid-area: motivation;
   display: flex;
   flex-direction: column;
 }
 
-.slr-content {
+.motivation-content {
   display: flex;
   gap: 7mm;
   flex: 1 1 auto;
   min-height: 0;
 }
 
-.slr-body {
+.motivation-body {
   display: flex;
   flex-direction: column;
   flex: 1 1 50%;
   min-height: 0;
 }
 
-.slr-body img {
+.motivation-body img {
   flex: 1 1 auto;
   min-height: 0;
   max-width: 100%;
   object-fit: contain;
 }
 
-.slr-gaps-row {
+.motivation-cards {
   display: flex;
   flex-direction: column;
   gap: 5mm;
@@ -255,19 +255,19 @@ html, body {
   min-height: 0;
 }
 
-.finding-card {
+.highlight-card {
   flex: 1 1 0;
   min-height: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: var(--color-teal-tint);
-  border-left: 5mm solid var(--color-teal);
+  background: var(--color-accent-tint);
+  border-left: 5mm solid var(--color-accent);
   border-radius: 0 2mm 2mm 0;
   padding: 6mm 7mm;
 }
 
-.finding-card .eyebrow {
+.highlight-card .eyebrow {
   display: block;
   font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   font-size: 32pt;
@@ -278,7 +278,7 @@ html, body {
   margin-bottom: 5mm;
 }
 
-.finding-card p {
+.highlight-card p {
   margin: 0;
   color: var(--color-text);
   font-size: var(--fs-body);
@@ -287,51 +287,53 @@ html, body {
 }
 
 /* ==========================================================================
-   Left stack: Meta-analysis + Real-World Evidence
+   Left stack: two stacked boxes
    ========================================================================== */
 
 .left-stack {
-  grid-area: leftstack;
+  grid-area: left;
   display: flex;
   flex-direction: column;
   gap: var(--gap);
 }
 
-.meta-analysis, .rwe {
+.left-top, .left-bottom {
   flex: 1 1 0;
   display: flex;
   flex-direction: column;
 }
 
-.meta-analysis {
+.left-top {
   position: relative;
 }
 
-.rwe-side {
+.left-bottom-side {
   flex: 0 0 120mm;
 }
 
-.nma-top {
+.left-top-row {
   display: flex;
   gap: 5mm;
   flex: 0 0 auto;
   margin-top: 4mm;
 }
 
-.nma-text {
+.left-top-text {
   flex: 1 1 auto;
   min-width: 0;
 }
 
-.nma-text p { margin: 0 0 3mm 0; }
-.nma-text p:last-child { margin-bottom: 0; }
+.left-top-text p { margin: 0 0 3mm 0; }
+.left-top-text p:last-child { margin-bottom: 0; }
 
-.nma-qr-spacer {
+.qr-spacer {
   flex: 0 0 60mm;
   width: 60mm;
 }
 
-.nma-qr-block {
+/* Optional QR / supplementary-link box, overlaid on a box's corner.
+   Delete the whole .qr-block element (and this spacer) if you don't need it. */
+.qr-block {
   position: absolute;
   top: 3mm;
   right: 3mm;
@@ -346,42 +348,42 @@ html, body {
   align-items: center;
 }
 
-.nma-qr-figure {
+.qr-figure {
   width: 100%;
   aspect-ratio: 1;
 }
 
-.nma-qr-label {
+.qr-label {
   text-align: center;
 }
 
-.nma-figures {
+.left-top-figures {
   margin-top: 5mm;
 }
 
 /* ==========================================================================
-   Cost-effectiveness analysis — taller box beside the left stack
+   Right stack: a taller box beside a shorter one
    ========================================================================== */
 
 .right-stack {
-  grid-area: cea;
+  grid-area: right;
   display: flex;
   flex-direction: column;
   gap: var(--gap);
 }
 
-.cea {
+.right-main {
   flex: 3 1 0;
   min-height: 0;
   display: flex;
   flex-direction: column;
 }
 
-.cea-side {
+.right-main-side {
   flex: 0 0 100mm;
 }
 
-.patient-involvement {
+.right-secondary {
   flex: 1 1 0;
   min-height: 0;
   display: flex;
